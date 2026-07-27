@@ -3,16 +3,15 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>🍌 Banana Bliss</title>
+<title>🍌 Banana Bliss</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 
-    <!-- Website Icon -->
-    <link rel="icon" type="image/jpeg" href="banana-cake.jpg">
+<link rel="icon" href="images/logo.png">
 
 </head>
 
@@ -71,7 +70,7 @@ placeholder="🔍 Search Products..."
 
 onkeyup="searchProducts()">
 
-<br>
+<br><br>
 
 <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
 
@@ -83,8 +82,10 @@ onkeyup="searchProducts()">
 
 <div class="hero-image">
 
-<img src="chocolate-banana-pudding.jpg"
-     alt="Banana Dessert">
+<img src="images/chocolate-banana-pudding.jpg"
+
+alt="Banana Dessert">
+
 </div>
 
 </section>
@@ -98,7 +99,7 @@ onkeyup="searchProducts()">
 
 <div class="product-card">
 
-    <img src="banana-cake.jpg" alt="Classic Banana Pudding">
+    <img src="images/banana-cake.jpg" alt="Classic Banana Pudding">
 
     <h3>Classic Banana Pudding</h3>
 
@@ -116,7 +117,7 @@ onkeyup="searchProducts()">
 
 <div class="product-card">
 
-    <img src="chocolate-banana-pudding.jpg"
+    <img src="images/chocolate-banana-pudding.jpg"
          alt="Chocolate Banana Pudding">
 
     <h3>Chocolate Banana Pudding</h3>
@@ -135,7 +136,7 @@ onkeyup="searchProducts()">
 
 <div class="product-card">
 
-    <img src="chocolate-cake.jpg"
+    <img src="images/chocolate-cake.jpg"
          alt="Banana Cake">
 
     <h3>Banana Cake</h3>
@@ -231,9 +232,17 @@ required></textarea>
 
 <h3>📱 Scan & Pay</h3>
 
-<img src="upi-qr.png.jpeg"
+<a href="upi://pay?pa=9741432959@ybl&pn=Banana%20Bliss&cu=INR"
+   class="upi-button">
+   📱 Pay with UPI
+</a>
+
+<br><br>
+
+<img src="images/upi-qr.png.jpeg"
      alt="UPI QR Code"
      class="upi-image">
+
 <p>
 Scan this QR code using Google Pay, PhonePe, Paytm or any UPI App.
 </p>
