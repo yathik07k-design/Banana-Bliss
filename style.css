@@ -413,5 +413,18 @@ nav{
 .contact h2{
     font-size:28px;
 }
+.upi-button{
+    display:inline-block;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+}
 
+.upi-button:hover{
+    background:#1ea952;
+}
 }
