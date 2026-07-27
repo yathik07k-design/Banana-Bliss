@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banana Bliss</title>
+
+<title>🍌 Banana Bliss</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link rel="icon" href="images/logo.png">
+
 </head>
 
 <body>
@@ -12,16 +20,30 @@
 <header class="header">
 
 <div class="logo">
-    <img src="banana-cake.jpg" alt="Banana Bliss Logo">
-    <h1>🍌 Banana Bliss</h1>
+
+<div class="logo-icon">BB</div>
+
+<div class="logo-text">
+    <h1>Banana Bliss</h1>
+    <p>Fresh • Healthy • Delicious</p>
+</div>
+
 </div>
 
 <nav>
-    <a href="#home">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#cart">🛒 Cart (<span id="cartCount">0</span>)</a>
-    <a href="#checkout">Checkout</a>
-    <a href="#contact">Contact</a>
+
+<a href="#home">Home</a>
+
+<a href="#menu">Menu</a>
+
+<a href="#cart">
+🛒 Cart (<span id="cartCount">0</span>)
+</a>
+
+<a href="#checkout">Checkout</a>
+
+<a href="#contact">Contact</a>
+
 </nav>
 
 </header>
@@ -30,29 +52,40 @@
 
 <div class="hero-text">
 
-<h2>Fresh Banana Puddings & Desserts</h2>
+<h2>Fresh Banana Puddings </h2>
 
 <p>
-Freshly prepared every day with premium ingredients.
-Enjoy creamy banana puddings, chocolate desserts and cakes.
+
+Creamy • Fresh • Delicious
+
 </p>
 
 <input
+
 id="searchBox"
+
 type="text"
+
 placeholder="🔍 Search Products..."
+
 onkeyup="searchProducts()">
 
 <br><br>
 
 <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
-Order Now
+
+🍌 Order Now
+
 </button>
 
 </div>
 
 <div class="hero-image">
-    <img src="chocolate-banana-pudding.jpg" alt="Chocolate Banana Pudding">
+
+<img src="images/chocolate-banana-pudding.jpg"
+
+alt="Banana Dessert">
+
 </div>
 
 </section>
@@ -61,101 +94,185 @@ Order Now
 
 <h2>Our Menu</h2>
 
-<div class="product product-card">
+<div class="products">
+    <!-- ================= PRODUCT 1 ================= -->
 
-<img src="banana-cake.jpg" alt="Classic Banana Pudding">
+<div class="product-card">
 
-<h3>Classic Banana Pudding</h3>
+    <img src="images/banana-cake.jpg" alt="Classic Banana Pudding">
 
-<p class="price">₹30</p>
+    <h3>Classic Banana Pudding</h3>
 
-<button onclick="addToCart('Classic Banana Pudding',30)">
-🛒 Add to Cart
-</button>
+    <p>Fresh banana pudding with creamy vanilla flavor.</p>
 
-</div>
+    <h4 class="price">₹30</h4>
 
-<div class="product product-card">
-
-<img src="chocolate-banana-pudding.jpg" alt="Chocolate Banana Pudding">
-
-<h3>Chocolate Banana Pudding</h3>
-
-<p class="price">₹50</p>
-
-<button onclick="addToCart('Chocolate Banana Pudding',50)">
-🛒 Add to Cart
-</button>
+    <button onclick="addToCart('Classic Banana Pudding',30)">
+        🛒 Add to Cart
+    </button>
 
 </div>
 
-<div class="product product-card">
+<!-- ================= PRODUCT 2 ================= -->
 
-<img src="chocolate-cake.jpg" alt="Banana Cake">
+<div class="product-card">
 
-<h3>Banana Cake</h3>
+    <img src="images/chocolate-banana-pudding.jpg"
+         alt="Chocolate Banana Pudding">
 
-<p class="price">₹30</p>
+    <h3>Chocolate Banana Pudding</h3>
 
-<button onclick="addToCart('Banana Cake',30)">
-🛒 Add to Cart
-</button>
+    <p>Rich chocolate pudding made with fresh bananas.</p>
+
+    <h4 class="price">₹50</h4>
+
+    <button onclick="addToCart('Chocolate Banana Pudding',50)">
+        🛒 Add to Cart
+    </button>
+
+</div>
+
+<!-- ================= PRODUCT 3 ================= -->
+
+<div class="product-card">
+
+    <img src="images/chocolate-cake.jpg"
+         alt="Banana Cake">
+
+    <h3>Banana Cake</h3>
+
+    <p>Soft homemade banana cake with chocolate topping.</p>
+
+    <h4 class="price">₹30</h4>
+
+    <button onclick="addToCart('Banana Cake',30)">
+        🛒 Add to Cart
+    </button>
+
+</div>
 
 </div>
 
 </section>
 
-<section id="cart">
+<!-- ================= SHOPPING CART ================= -->
+
+<section id="cart" class="cart-section">
 
 <h2>🛒 Shopping Cart</h2>
 
 <div id="cartItems">
+
 <p>Your cart is empty.</p>
+
 </div>
 
 <h3>Total: ₹<span id="total">0</span></h3>
 
 </section>
+<!-- ================= CHECKOUT ================= -->
 
-<section id="checkout">
+<section id="checkout" class="checkout">
 
-<h2>Checkout</h2>
+<h2>🧾 Checkout</h2>
 
-<input type="text" id="name" placeholder="Enter Your Name">
-
-<br><br>
-
-<input type="tel" id="phone" placeholder="Enter Phone Number">
-
-<br><br>
-
-<textarea id="address" placeholder="Enter Delivery Address"></textarea>
+<input
+type="text"
+id="name"
+placeholder="👤 Enter Your Name"
+required>
 
 <br><br>
 
-<select id="payment">
-<option>Cash on Delivery</option>
+<input
+type="tel"
+id="phone"
+placeholder="📞 Enter Phone Number"
+required>
+
+<br><br>
+
+<textarea
+id="address"
+rows="4"
+placeholder="🏠 Enter Delivery Address"
+required></textarea>
+
+<br><br>
+
+<button type="button" onclick="getLocation()">
+📍 Share My Live Location
+</button>
+
+<p id="locationStatus"></p>
+
+<br>
+
+<label><strong>Payment Method</strong></label>
+
+<br><br>
+
+<select id="payment" onchange="toggleUPI()">
+
+<option value="Cash on Delivery">
+💵 Cash on Delivery
+</option>
+
+<option value="UPI">
+💳 UPI Payment
+</option>
+
 </select>
 
 <br><br>
 
+<!-- UPI QR (Hidden by Default) -->
+
+<div id="upiBox" class="upi-box" style="display:none;">
+
+<h3>📱 Scan & Pay</h3>
+
+<img src="images/upi-qr.png.jpeg"
+     alt="UPI QR Code"
+     class="upi-image">
+<p>
+Scan this QR code using Google Pay, PhonePe, Paytm or any UPI App.
+</p>
+
+</div>
+
+<br>
+
 <button onclick="placeOrder()">
-Place Order via WhatsApp
+📦 Place Order via WhatsApp
 </button>
 
 <p id="message"></p>
 
 </section>
+<!-- ================= CONTACT ================= -->
 
-<section id="contact">
+<section id="contact" class="contact">
 
-<h2>Contact Us</h2>
+<h2>📞 Contact Us</h2>
 
-<p>📞 +91 9741432959</p>
-<p>📧 yathikkumar2002@gmail.com</p>
-<p>📍 Davanagere, Karnataka</p>
+<p><strong>Business Name:</strong> Banana Bliss</p>
+
+<p><strong>Phone:</strong> +91 9741432959</p>
+
+<p><strong>Email:</strong> yathikkumar2002@gmail.com</p>
+
+<p><strong>Location:</strong> Davanagere, Karnataka</p>
+
+<p><strong>Business Hours:</strong></p>
+
+<p>Monday - Sunday</p>
+
+<p>9:00 AM - 9:00 PM</p>
 
 </section>
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -165,7 +282,7 @@ Place Order via WhatsApp
 
 <p>Fresh • Healthy • Delicious</p>
 
-<p>Thank you for visiting Banana Bliss!</p>
+<p>Made with ❤️ for our customers.</p>
 
 <p>&copy; 2026 Banana Bliss. All Rights Reserved.</p>
 
@@ -173,8 +290,16 @@ Place Order via WhatsApp
 
 </footer>
 
-<a href="https://wa.me/919741432959" class="whatsapp" target="_blank">
+<!-- ================= FLOATING WHATSAPP ================= -->
+
+<a
+href="https://wa.me/919741432959"
+class="whatsapp"
+target="_blank"
+title="Chat on WhatsApp">
+
 💬
+
 </a>
 
 <script src="script.js"></script>
