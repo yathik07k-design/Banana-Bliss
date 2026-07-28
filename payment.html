@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banana Bliss - Payment</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#fff8f0;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+h2,h3{
+    text-align:center;
+    color:#ff9800;
+}
+
+input,
+textarea,
+select{
+
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    box-sizing:border-box;
+
+}
+
+textarea{
+
+    resize:none;
+    height:90px;
+
+}
+
+button{
+
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    font-size:17px;
+    cursor:pointer;
+
+}
+
+.save-btn{
+    background:#4CAF50;
+    color:white;
+}
+
+.location-btn{
+    background:#2196F3;
+    color:white;
+}
+
+.order-btn{
+    background:#ff9800;
+    color:white;
+}
+
+.edit-btn{
+    background:#555;
+    color:white;
+}
+
+.summary-item{
+
+    display:flex;
+    justify-content:space-between;
+    margin:8px 0;
+
+}
+
+#savedAddress{
+
+    display:none;
+    background:#f7f7f7;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+
+}
+
+#upiBox{
+
+    display:none;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🍌 Banana Bliss</h2>
+
+<h3>Delivery Address</h3>
+
+<div id="addressForm">
+
+<input
+type="text"
+id="name"
+placeholder="Full Name">
+
+<input
+type="tel"
+id="phone"
+placeholder="Phone Number">
+
+<textarea
+id="address"
+placeholder="Delivery Address"></textarea>
+
+<button
+class="save-btn"
+onclick="saveAddress()">
+
+Save Address
+
+</button>
+
+</div>
+
+<div id="savedAddress">
+
+<p id="showName"></p>
+
+<p id="showPhone"></p>
+
+<p id="showAddress"></p>
+
+<button
+class="edit-btn"
+onclick="editAddress()">
+
+Edit Address
+
+</button>
+
+</div>
+
+<hr>
+
+<button
+class="location-btn"
+onclick="getLocation()">
+
+📍 Use Current Location
+
+</button>
+
+<p id="locationStatus"></p>
+
+<hr>
+
+<h3>Payment Method</h3>
+
+<select id="payment" onchange="toggleUPI()">
+
+    <option value="COD">Cash On Delivery</option>
+
+    <option value="UPI">UPI</option>
+
+</select>
+
+<div id="upiBox" style="display:none;">
+
+    <h3>Pay Using UPI</h3>
+
+    <p><strong>UPI ID:</strong> 9741432959@ybl</p>
+
+    <button class="order-btn" type="button" onclick="payUPI()">
+        💳 Pay Now
+    </button>
+
+</div>
+
+<hr>
+
+<button class="order-btn" onclick="goToReview()">
+    Continue →
+</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
