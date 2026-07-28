@@ -307,19 +307,7 @@ function placeOrder(){
     }
 
     const payment = localStorage.getItem("paymentMethod");
-
-let txn = localStorage.getItem("txnId") || "";
-
-if(payment === "UPI" && txn === ""){
-    alert("Please enter Transaction ID.");
-    return;
-}
-
-    if(payment === "UPI" && txn === ""){
-        alert("Please enter Transaction ID.");
-        return;
-    }
-
+   
     if(cart.length === 0){
         alert("Your cart is empty.");
         return;
@@ -332,11 +320,7 @@ if(payment === "UPI" && txn === ""){
     message += "🏠 Address : " + user.address + "\n";
     message += "💳 Payment : " + payment + "\n";
 
-    if(payment === "UPI"){
-        message += "🧾 Transaction ID : " + txn + "\n";
-    }
-
-   const savedLocation = localStorage.getItem("customerLocation") || "";
+    const savedLocation = localStorage.getItem("customerLocation") || "";
 
 if(savedLocation !== ""){
     message += "📍 Location : " + savedLocation + "\n";
