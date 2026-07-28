@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Orders</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📦 My Orders</h2>
+
+<div id="ordersList"></div>
+
+<a href="index.html">
+<button class="checkout-btn">⬅ Back to Home</button>
+</a>
+
+</div>
+
+<script>
+
+const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+const list = document.getElementById("ordersList");
+
+if(orders.length===0){
+
+list.innerHTML="<h3>No Orders Yet</h3>";
+
+}else{
+
+orders.forEach(order=>{
+
+list.innerHTML+=`
+
+<div class="order-card">
+
+<h3>Order #${order.id}</h3>
+
+<p><strong>Date:</strong> ${order.date}</p>
+
+<p><strong>Total:</strong> ₹${order.total}</p>
+
+<p><strong>Payment:</strong> ${order.payment}</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
