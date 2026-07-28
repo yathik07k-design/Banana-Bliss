@@ -188,15 +188,25 @@ onclick="getLocation()">
     <option value="UPI">UPI</option>
 
 </select>
-
 <div id="upiBox" style="display:none;">
 
-    <h3>Pay Using UPI</h3>
+    <h3>Pay Using Any UPI App</h3>
 
-    <p><strong>UPI ID:</strong> 9741432959@ybl</p>
+    <img src="images/upi-qr.png"
+     alt="UPI QR"
+     width="250"
+     style="border:5px solid red;">
 
-    <button class="order-btn" type="button" onclick="payUPI()">
-        💳 Pay Now
+    <h3>UPI ID</h3>
+
+    <input
+        type="text"
+        id="upiId"
+        value="9741432959@ybl"
+        readonly>
+
+    <button class="save-btn" onclick="copyUPI()">  
+        📋 Copy UPI ID
     </button>
 
 </div>
