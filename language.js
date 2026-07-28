@@ -78,7 +78,7 @@ function applyLanguage(){
 
     const key = element.getAttribute("data-placeholder");
 
-    if(translations[lang][key]){
+    if(translations[lang][key]){   
         element.placeholder = translations[lang][key];
     }
 
