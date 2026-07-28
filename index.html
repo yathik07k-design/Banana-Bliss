@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
- 
+
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="style.css">
 
-<link rel="icon" href="banana-cake.jpg">
+<link rel="icon" href="images/logo.png">
 
 </head>
 
@@ -40,7 +40,7 @@
 🛒 Cart (<span id="cartCount">0</span>)
 </a>
 
-<a href="#checkout">Checkout</a>
+<a href="payment.html">Checkout</a>
 
 <a href="#contact">Contact</a>
 
@@ -82,7 +82,7 @@ onkeyup="searchProducts()">
 
 <div class="hero-image">
 
-<img src="chocolate-banana-pudding.jpg"
+<img src="images/chocolate-banana-pudding.jpg"
 
 alt="Banana Dessert">
 
@@ -99,7 +99,7 @@ alt="Banana Dessert">
 
 <div class="product-card">
 
-    <img src="banana-cake.jpg" alt="Classic Banana Pudding">
+    <img src="images/banana-cake.jpg" alt="Classic Banana Pudding">
 
     <h3>Classic Banana Pudding</h3>
 
@@ -117,7 +117,7 @@ alt="Banana Dessert">
 
 <div class="product-card">
 
-    <img src="chocolate-banana-pudding.jpg"
+    <img src="images/chocolate-banana-pudding.jpg"
          alt="Chocolate Banana Pudding">
 
     <h3>Chocolate Banana Pudding</h3>
@@ -136,7 +136,7 @@ alt="Banana Dessert">
 
 <div class="product-card">
 
-    <img src="chocolate-cake.jpg"
+    <img src="images/chocolate-cake.jpg"
          alt="Banana Cake">
 
     <h3>Banana Cake</h3>
@@ -146,14 +146,16 @@ alt="Banana Dessert">
     <h4 class="price">₹30</h4>
 
     <button onclick="addToCart('Banana Cake',30)">
-        🛒 Add to Cart
-    </button>
+    🛒 Add to Cart
+</button>
 
 </div>
 
 </div>
 
 </section>
+
+<!-- ================= SHOPPING CART ================= -->
 
 <!-- ================= SHOPPING CART ================= -->
 
@@ -169,95 +171,15 @@ alt="Banana Dessert">
 
 <h3>Total: ₹<span id="total">0</span></h3>
 
-</section>
-<!-- ================= CHECKOUT ================= -->
-
-<section id="checkout" class="checkout">
-
-<h2>🧾 Checkout</h2>
-
-<input
-type="text"
-id="name"
-placeholder="👤 Enter Your Name"
-required>
-
-<br><br>
-
-<input
-type="tel"
-id="phone"
-placeholder="📞 Enter Phone Number"
-required>
-
-<br><br>
-
-<textarea
-id="address"
-rows="4"
-placeholder="🏠 Enter Delivery Address"
-required></textarea>
-
-<br><br>
-
-<button type="button" onclick="getLocation()">
-📍 Share My Live Location
-</button>
-
-<p id="locationStatus"></p>
-
 <br>
 
-<label><strong>Payment Method</strong></label>
-
-<br><br>
-
-<select id="payment" onchange="toggleUPI()">
-
-<option value="Cash on Delivery">
-💵 Cash on Delivery
-</option>
-
-<option value="UPI">
-💳 UPI Payment
-</option>
-
-</select>
-
-<br><br>
-
-<!-- UPI QR (Hidden by Default) -->
-
-<div id="upiBox" class="upi-box" style="display:none;">
-
-<h3>📱 Scan & Pay</h3>
-
-<a href="upi://pay?pa=9741432959@ybl&pn=Banana%20Bliss&cu=INR"
-   class="upi-button">
-   📱 Pay with UPI
-</a>
-
-<br><br>
-
-<img src="upi-qr.png.jpeg"
-     alt="UPI QR Code"
-     class="upi-image">
-
-<p>
-Scan this QR code using Google Pay, PhonePe, Paytm or any UPI App.
-</p>
-
-</div>
-
-<br>
-
-<button onclick="placeOrder()">
-📦 Place Order via WhatsApp
+<button class="checkout-btn" onclick="goToPayment()">
+    Proceed to Checkout →
 </button>
 
-<p id="message"></p>
-
 </section>
+
+
 <!-- ================= CONTACT ================= -->
 
 <section id="contact" class="contact">
@@ -292,6 +214,7 @@ Scan this QR code using Google Pay, PhonePe, Paytm or any UPI App.
 
 <p>Made with ❤️ for our customers.</p>
 
+<p>&copy; 2026 Banana Bliss. All Rights Reserved.</p>
 
 </div>
 
