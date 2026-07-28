@@ -1,8 +1,9 @@
 // =========================
-// CART
+// BANANA BLISS
 // =========================
 
-let cart = [];
+// CART
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let total = 0;
 let customerLocation = "";
 
@@ -10,118 +11,234 @@ let customerLocation = "";
 // ADD TO CART
 // =========================
 
-function addToCart(name, price) {
+function addToCart(name, price){
 
-    cart.push({
-        name,
-        price
-    });
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    total += price;
+    let item = cart.find(product => product.name === name);
+
+    if(item){
+        item.qty++;
+    }else{
+        cart.push({
+            name: name,
+            price: price,
+            qty: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCart();
-
 }
+
 
 // =========================
 // UPDATE CART
 // =========================
 
-function updateCart() {
+function updateCart(){
+
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const cartItems = document.getElementById("cartItems");
-
     const totalAmount = document.getElementById("total");
-
     const cartCount = document.getElementById("cartCount");
 
-    if(cart.length===0){
+    total = 0;
 
-        cartItems.innerHTML="<p>Your cart is empty.</p>";
+    if(cartItems){
+
+        cartItems.innerHTML = "";
+
+        if(cart.length === 0){
+
+            cartItems.innerHTML = "<p>Your cart is empty.</p>";
+
+        }else{
+
+            cart.forEach((item,index)=>{
+
+                total += item.price * item.qty;
+
+                cartItems.innerHTML += `
+                <div class="cart-item">
+                    <div>
+                        <strong>${item.name}</strong><br>
+                        ₹${item.price} × ${item.qty} =
+                        <strong>₹${item.price * item.qty}</strong>
+                    </div>
+
+                    <div class="qty-box">
+                        <button onclick="decreaseQty(${index})">➖</button>
+                        <span>${item.qty}</span>
+                        <button onclick="increaseQty(${index})">➕</button>
+                    </div>
+                </div>
+                `;
+
+            });
+
+        }
 
     }
 
-    else{
+    if(totalAmount){
+        totalAmount.innerHTML = total;
+    }
 
-        cartItems.innerHTML="";
+    if(cartCount){
+        let count = 0;
 
-        cart.forEach((item,index)=>{
-
-            cartItems.innerHTML +=`
-
-            <div class="cart-item">
-
-            <div>
-
-            <strong>${item.name}</strong>
-
-            <br>
-
-            ₹${item.price}
-
-            </div>
-
-            <button onclick="removeItem(${index})">
-
-            Remove
-
-            </button>
-
-            </div>
-
-            `;
-
+        cart.forEach(item=>{
+            count += item.qty;
         });
 
+        cartCount.innerHTML = count;
     }
-
-    totalAmount.innerText=total;
-
-    cartCount.innerText=cart.length;
 
 }
 
 // =========================
-// REMOVE ITEM
+// QUANTITY
 // =========================
 
-function removeItem(index){
+function increaseQty(index){
 
-    total -= cart[index].price;
+    cart[index].qty++;
 
-    cart.splice(index,1);
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCart();
 
 }
 
+function decreaseQty(index){
+
+    cart[index].qty--;
+
+    if(cart[index].qty <= 0){
+        cart.splice(index,1);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCart();
+
+}
 // =========================
 // SEARCH PRODUCTS
 // =========================
 
 function searchProducts(){
 
-    let input=document.getElementById("searchBox").value.toLowerCase();
+    let input = document.getElementById("searchBox");
 
-    let products=document.querySelectorAll(".product-card");
+    if(!input) return;
+
+    input = input.value.toLowerCase();
+
+    let products = document.querySelectorAll(".product-card");
 
     products.forEach(function(product){
 
-        let text=product.innerText.toLowerCase();
+        let text = product.innerText.toLowerCase();
 
         if(text.includes(input)){
-
-            product.style.display="block";
-
-        }
-
-        else{
-
-            product.style.display="none";
-
+            product.style.display = "block";
+        }else{
+            product.style.display = "none";
         }
 
     });
+
+}
+
+// =========================
+// SAVE ADDRESS
+// =========================
+
+function saveAddress(){
+
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
+
+    if(name==="" || phone==="" || address===""){
+        alert("Please fill all details.");
+        return;
+    }
+
+    const user = {
+        name: name,
+        phone: phone,
+        address: address
+    };
+
+    localStorage.setItem("customer", JSON.stringify(user));
+
+    loadAddress();
+
+}
+
+// =========================
+// LOAD ADDRESS
+// =========================
+
+function loadAddress(){
+
+    const user = JSON.parse(localStorage.getItem("customer"));
+
+    const addressForm = document.getElementById("addressForm");
+    const savedAddress = document.getElementById("savedAddress");
+
+    if(!user){
+
+        if(addressForm) addressForm.style.display = "block";
+        if(savedAddress) savedAddress.style.display = "none";
+
+        return;
+    }
+
+    if(document.getElementById("name")){
+        document.getElementById("name").value = user.name;
+    }
+
+    if(document.getElementById("phone")){
+        document.getElementById("phone").value = user.phone;
+    }
+
+    if(document.getElementById("address")){
+        document.getElementById("address").value = user.address;
+    }
+
+    if(addressForm) addressForm.style.display = "none";
+    if(savedAddress) savedAddress.style.display = "block";
+
+    if(document.getElementById("showName")){
+        document.getElementById("showName").innerHTML = "👤 " + user.name;
+    }
+
+    if(document.getElementById("showPhone")){
+        document.getElementById("showPhone").innerHTML = "📞 " + user.phone;
+    }
+
+    if(document.getElementById("showAddress")){
+        document.getElementById("showAddress").innerHTML = "🏠 " + user.address;
+    }
+}
+
+// =========================
+// EDIT ADDRESS
+// =========================
+
+function editAddress(){
+
+    if(document.getElementById("addressForm"))
+        document.getElementById("addressForm").style.display = "block";
+
+    if(document.getElementById("savedAddress"))
+        document.getElementById("savedAddress").style.display = "none";
 
 }
 
@@ -131,63 +248,48 @@ function searchProducts(){
 
 function toggleUPI(){
 
-    let payment=document.getElementById("payment").value;
+    const payment = document.getElementById("payment");
+    const upiBox = document.getElementById("upiBox");
 
-    let upiBox=document.getElementById("upiBox");
-
-    if(payment==="UPI"){
-
-        upiBox.style.display="block";
-
-    }
-
-    else{
-
-        upiBox.style.display="none";
-
+    if(payment.value === "UPI"){
+        upiBox.style.display = "block";
+    }else{
+        upiBox.style.display = "none";
     }
 
 }
-
 // =========================
-// LIVE LOCATION
+// GO TO PAYMENT
 // =========================
 
-function getLocation(){
+function goToPayment(){
 
-    if(navigator.geolocation){
+    if(cart.length === 0){
+        alert("Your cart is empty.");
+        return;
+    }
 
-        document.getElementById("locationStatus").innerHTML="Getting location...";
+    window.location.href = "payment.html";
 
-        navigator.geolocation.getCurrentPosition(
+}
+// =========================
+// GO TO REVIEW
+// =========================
 
-            function(position){
+function goToReview(){
 
-                let lat=position.coords.latitude;
+    const payment = document.getElementById("payment").value;
 
-                let lng=position.coords.longitude;
+    localStorage.setItem("paymentMethod", payment);
 
-                customerLocation="https://www.google.com/maps?q="+lat+","+lng;
-
-                document.getElementById("locationStatus").innerHTML="✅ Location Captured";
-
-            },
-
-            function(){
-
-                document.getElementById("locationStatus").innerHTML="❌ Location Permission Denied";
-
-            }
-
+    if(document.getElementById("txnId")){
+        localStorage.setItem(
+            "txnId",
+            document.getElementById("txnId").value
         );
-
     }
 
-    else{
-
-        alert("Geolocation not supported.");
-
-    }
+    window.location.href = "review.html";
 
 }
 
@@ -197,88 +299,203 @@ function getLocation(){
 
 function placeOrder(){
 
-    let name=document.getElementById("name").value;
+    const user = JSON.parse(localStorage.getItem("customer"));
 
-    let phone=document.getElementById("phone").value;
-
-    let address=document.getElementById("address").value;
-
-    let payment=document.getElementById("payment").value;
-
-    let txn="";
-
-    if(document.getElementById("txnId")){
-
-        txn=document.getElementById("txnId").value;
-
-    }
-
-    if(name==""){
-
-        alert("Enter Name");
-
+    if(!user){
+        alert("Please save your address first.");
         return;
-
     }
 
-    if(phone==""){
+    const payment = localStorage.getItem("paymentMethod");
 
-        alert("Enter Phone Number");
+let txn = localStorage.getItem("txnId") || "";
 
+if(payment === "UPI" && txn === ""){
+    alert("Please enter Transaction ID.");
+    return;
+}
+
+    if(payment === "UPI" && txn === ""){
+        alert("Please enter Transaction ID.");
         return;
-
     }
 
-    if(address==""){
-
-        alert("Enter Address");
-
+    if(cart.length === 0){
+        alert("Your cart is empty.");
         return;
-
     }
 
-    if(cart.length==0){
+    let message = "🍌 Banana Bliss Order\n\n";
 
-        alert("Cart is Empty");
+    message += "👤 Name : " + user.name + "\n";
+    message += "📞 Phone : " + user.phone + "\n";
+    message += "🏠 Address : " + user.address + "\n";
+    message += "💳 Payment : " + payment + "\n";
 
-        return;
-
+    if(payment === "UPI"){
+        message += "🧾 Transaction ID : " + txn + "\n";
     }
 
-    let message="🍌 Banana Bliss Order\n\n";
+   const savedLocation = localStorage.getItem("customerLocation") || "";
 
-    message+="👤 Name : "+name+"\n";
+if(savedLocation !== ""){
+    message += "📍 Location : " + savedLocation + "\n";
+}
 
-    message+="📞 Phone : "+phone+"\n";
+    message += "\n🛒 Order Items\n\n";
 
-    message+="🏠 Address : "+address+"\n";
-
-    message+="💳 Payment : "+payment+"\n";
-
-    if(payment==="UPI"){
-
-        message+="🧾 Transaction ID : "+txn+"\n";
-
-    }
-
-    if(customerLocation!=""){
-
-        message+="📍 Location : "+customerLocation+"\n";
-
-    }
-
-    message+="\n🛒 Order Items\n\n";
+    total = 0;
 
     cart.forEach(function(item){
 
-        message+=item.name+" - ₹"+item.price+"\n";
+        total += item.price * item.qty;
+
+        message += item.name +
+        " × " + item.qty +
+        " = ₹" + (item.price * item.qty) + "\n";
 
     });
 
-    message+="\n💰 Total : ₹"+total;
+    message += "\n💰 Total : ₹" + total;
 
-    let url="https://wa.me/919741432959?text="+encodeURIComponent(message);
+    const phoneNumber = "919741432959";
 
-    window.open(url,"_blank");
+    window.open(
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+    localStorage.removeItem("cart");
+
+    cart = [];
+
+    updateCart();
+
+    setTimeout(function(){
+
+        window.location.href = "success.html";
+
+    },1000);
+
+}
+// =========================
+// CHECKOUT ORDER SUMMARY
+// =========================
+
+function loadCheckout(){
+
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const summary = document.getElementById("orderSummary");
+    const checkoutTotal = document.getElementById("checkoutTotal");
+
+    if(!summary || !checkoutTotal) return;
+
+    summary.innerHTML = "";
+
+    let grandTotal = 0;
+
+    if(cart.length === 0){
+        summary.innerHTML = "<p>Your cart is empty.</p>";
+        checkoutTotal.innerHTML = "0";
+        return;
+    }
+
+    cart.forEach(function(item){
+
+        const itemTotal = item.price * item.qty;
+
+        grandTotal += itemTotal;
+
+        summary.innerHTML += `
+        <div class="summary-item">
+            <span>${item.name} × ${item.qty}</span>
+            <strong>₹${itemTotal}</strong>
+        </div>
+        `;
+    });
+
+    checkoutTotal.innerHTML = grandTotal;
+}
+
+// =========================
+// PAGE INITIALIZATION
+// =========================
+
+window.onload = function(){
+
+    updateCart();
+
+    loadAddress();
+
+    loadCheckout();
+
+    if(document.getElementById("payment")){
+        toggleUPI();
+    }
+
+};
+function getLocation() {
+
+    const status = document.getElementById("locationStatus");
+
+    if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser.");
+        return;
+    }
+
+    if (status) {
+        status.innerHTML = "Getting location...";
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            customerLocation =
+                "https://www.google.com/maps/search/?api=1&query=" + lat + "," + lng;
+
+            // Save location
+            localStorage.setItem("customerLocation", customerLocation);
+
+            if (status) {
+                status.innerHTML = "✅ Location Captured";
+            }
+
+        },
+
+        function(error) {
+
+            if (status) {
+                status.innerHTML = "❌ " + error.message;
+            }
+
+        },
+
+        {
+            enableHighAccuracy: true,
+            timeout: 15000,
+            maximumAge: 0
+        }
+
+    );
+}
+function payUPI(){
+
+    const amount = total;
+
+    const upiURL =
+        "upi://pay?pa=9741432959@ybl" +
+        "&pn=Banana Bliss" +
+        "&am=" + amount +
+        "&cu=INR";
+
+    window.location.href = upiURL;
 
 }
