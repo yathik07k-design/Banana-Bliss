@@ -180,8 +180,15 @@ MENU
 }
 
 .product-card h3{
-    margin-top:15px;
-    color:#5d4037;
+    background:#FFF3E0;
+    color:#5D4037;
+    padding:10px;
+    margin:15px 0;
+    border-radius:8px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    border-left:5px solid #FF9800;
 }
 
 .product-card p{
@@ -189,9 +196,15 @@ MENU
 }
 
 .price{
-    color:#e65100;
-    font-size:24px;
+    display:inline-block;
+    background:#FFF3E0;
+    color:#E65100;
+    padding:8px 18px;
+    border-radius:8px;
+    border:2px solid #FF9800;
+    font-size:26px;
     font-weight:bold;
+    margin:10px 0;
 }
 
 .product-card button{
@@ -201,6 +214,7 @@ MENU
     padding:12px 20px;
     border-radius:8px;
     cursor:pointer;
+    margin-left:15px;
 }
 
 .product-card button:hover{
@@ -236,13 +250,29 @@ SHOPPING CART
     margin-bottom:15px;
 }
 
-.cart-item button{
-    background:#e53935;
-    color:white;
+.qty-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.qty-box button{
+    width:35px;
+    height:35px;
     border:none;
-    padding:8px 15px;
-    border-radius:6px;
+    border-radius:5px;
+    background:#ff9800;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
     cursor:pointer;
+}
+
+.qty-box span{
+    font-size:18px;
+    font-weight:bold;
+    min-width:20px;
+    text-align:center;
 }
 
 /* ===========================
@@ -413,18 +443,5 @@ nav{
 .contact h2{
     font-size:28px;
 }
-.upi-button{
-    display:inline-block;
-    background:#25D366;
-    color:white;
-    text-decoration:none;
-    padding:12px 25px;
-    border-radius:8px;
-    font-size:18px;
-    font-weight:bold;
-}
 
-.upi-button:hover{
-    background:#1ea952;
-}
 }
