@@ -342,9 +342,22 @@ if(savedLocation !== ""){
 
     message += "\n💰 Total : ₹" + total;
 
-    const phoneNumber = "919741432959";
+// Save Order
+const orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-    window.open(
+orders.push({
+    id: orders.length + 1,
+    date: new Date().toLocaleString(),
+    total: total,
+    payment: payment,
+    items: [...cart]
+});
+
+localStorage.setItem("orders", JSON.stringify(orders));
+
+const phoneNumber = "919741432959";
+
+window.open(
         "https://wa.me/" +
         phoneNumber +
         "?text=" +
