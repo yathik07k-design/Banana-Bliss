@@ -15,19 +15,29 @@
 
 <body>
 
-<div class="container">
+<div class="review-container">
 
-<h2>🛒 Review Order</h2>
+    <h2>🛒 Review Order</h2>
 
-<div id="orderSummary"></div>
+    <div class="review-box">
+        <h3>📦 Order Items</h3>
+        <div id="orderSummary"></div>
+    </div>
 
-<h2>
-Total ₹<span id="checkoutTotal">0</span>
-</h2>
+    <div class="review-box">
+        <h3>💰 Bill Details</h3>
 
-<button onclick="placeOrder()">
-Place Order
-</button>
+        <div class="bill-row">
+            <span>Total</span>
+            <strong>₹<span id="checkoutTotal">0</span></strong>
+        </div>
+    </div>
+
+    <div class="place-box">
+        <button class="place-btn" onclick="placeOrder()">
+            🛒 Place Order
+        </button>
+    </div>
 
 </div>
 
