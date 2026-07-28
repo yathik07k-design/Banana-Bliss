@@ -409,7 +409,7 @@ function loadCheckout(){
 
         summary.innerHTML += `
         <div class="summary-item">
-            <span>${item.name} × ${item.qty}</span>
+            <span>${item.name} × ${item.qty} =</span>
             <strong>₹${itemTotal}</strong>
         </div>
         `;
