@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFD54F">
 
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
 <title>🍌 Banana Bliss</title>
 
 <link rel="stylesheet" href="style.css">
@@ -32,18 +34,23 @@
 
 <nav>
 
-<a href="#home">Home</a>
+<a href="#home" data-lang="home">Home</a>
 
-<a href="#menu">Menu</a>
+<a href="#menu" data-lang="menu">Menu</a>
 
-<a href="#cart">
+<a href="#cart" data-lang="cart">
 🛒 Cart (<span id="cartCount">0</span>)
 </a>
 
-<a href="payment.html">Checkout</a>
+<a href="payment.html" data-lang="checkout">Checkout</a>
 
-<a href="orders.html">📦 My Orders</a>
-<a href="#contact">Contact</a>
+<a href="orders.html" data-lang="orders">📦 My Orders</a>
+<a href="#contact" data-lang="contact">Contact</a>
+<select id="language" onchange="changeLanguage()">
+    <option value="en">English</option>
+    <option value="kn">ಕನ್ನಡ</option>
+    <option value="hi">हिन्दी</option>
+</select>
 
 </nav>
 
@@ -53,30 +60,27 @@
 
 <div class="hero-text">
 
-<h2>Fresh Banana Puddings </h2>
+<h2 data-lang="heroTitle">Fresh Banana Puddings</h2>
 
-<p>
+<p data-lang="heroSub">
 
 Creamy • Fresh • Delicious
 
 </p>
 
 <input
-
 id="searchBox"
-
 type="text"
-
+data-placeholder="search"
 placeholder="🔍 Search Products..."
-
 onkeyup="searchProducts()">
 
 <br><br>
 
-<button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
-
-🍌 Order Now
-
+<button
+    data-lang="orderNow"
+    onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
+    🍌 Order Now
 </button>
 
 </div>
@@ -234,6 +238,7 @@ title="Chat on WhatsApp">
 </a>
 
 <script src="script.js"></script>
+<script src="language.js"></script>
 
 </body>
 </html>
