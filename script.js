@@ -485,7 +485,18 @@ function getLocation() {
 }
 function payUPI(){
 
-    const amount = total;
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let amount = 0;
+
+    cart.forEach(item => {
+        amount += item.price * item.qty;
+    });
+
+    if(amount <= 0){
+        alert("Cart is empty.");
+        return;
+    }
 
     const upiURL =
         "upi://pay?pa=9741432959@ybl" +
@@ -496,6 +507,19 @@ function payUPI(){
     window.location.href = upiURL;
 
 }
+function copyUPI(){  
+
+    const upi = document.getElementById("upiId");
+
+    upi.select();
+    upi.setSelectionRange(0,99999);
+
+    navigator.clipboard.writeText(upi.value);
+
+    alert("UPI ID copied successfully.");
+
+}
+
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
         navigator.serviceWorker.register("service-worker.js");
