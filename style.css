@@ -383,6 +383,58 @@ WHATSAPP BUTTON
 .whatsapp:hover{
     transform:scale(1.1);
 }
+/* ===========================
+REVIEW ORDER
+=========================== */
+
+.review-container{
+    max-width:600px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.review-box{
+    background:#ffffff;
+    padding:20px;
+    margin:20px 0;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+    border:1px solid #ddd;
+}
+
+.place-box{
+    background:#ffffff;
+    padding:20px;
+    margin:20px 0;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+.place-btn{
+    width:100%;
+    padding:15px;
+    background:#FC8019;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.place-btn:hover{
+    background:#E65100;
+}
+
+.bill-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:20px;
+    font-weight:bold;
+}
 
 /* ===========================
 MOBILE
@@ -422,3 +474,5 @@ nav{
 }
 
 }
+
+
