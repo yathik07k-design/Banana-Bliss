@@ -279,52 +279,29 @@ SHOPPING CART
 CHECKOUT
 =========================== */
 
-.checkout{
-    padding:50px 8%;
-    background:#fff8f0;
+.checkout-btn{
+    display:inline-block;
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
 }
 
-.checkout h2{
-    font-size:32px;
-    color:#5d4037;
-    margin-bottom:25px;
+.checkout-btn:hover{
+    background: linear-gradient(135deg, #ff5722, #e64a19);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.35);
 }
 
-.checkout input,
-.checkout textarea,
-.checkout select{
-    width:100%;
-    max-width:500px;
-    padding:14px;
-    margin-bottom:18px;   /* Reduced gap */
-    border:2px solid #ddd;
-    border-radius:10px;
-    font-size:16px;
-}
-
-.checkout textarea{
-    height:120px;
-    resize:vertical;
-}
-
-.checkout button{
-    background:#ff9800;
-    color:#fff;
-    border:none;
-    padding:14px 28px;
-    border-radius:10px;
-    cursor:pointer;
-    margin-bottom:20px;   /* Reduced gap below button */
-}
-
-.checkout button:hover{
-    background:#ef6c00;
-}
-
-.checkout h3{
-    margin:10px 0 15px;   /* Reduced gap above Payment Method */
-    font-size:24px;
-    color:#333;
+.checkout-btn:active{
+    transform: scale(0.96);
 }
 
 /* ===========================
